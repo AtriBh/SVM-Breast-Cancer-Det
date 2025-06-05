@@ -85,5 +85,5 @@ All visualization files are included in the repository:
 - `Screenshot_2025-06-05_180339.png`: PCA decision boundary overview
 - `Screenshot_2025-06-05_182513.png`: Gamma parameter validation curve
 - `Screenshot_2025-06-05_182520.png`: C parameter validation curve
-```
+
 
