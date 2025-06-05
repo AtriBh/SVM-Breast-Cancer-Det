@@ -1,6 +1,6 @@
 
 
-````markdown
+
 # Breast Cancer Classification with SVM
 
 ![SVM Decision Boundary](Screenshot%202025-06-05%20180339.png)
@@ -32,7 +32,7 @@ from sklearn.svm import SVC
 # Optimal parameters from validation curves
 svm_rbf = SVC(kernel='rbf', C=1.0, gamma=1.0, random_state=42)
 svm_rbf.fit(X_train, y_train)
-````
+
 
 ### 3. Hyperparameter Tuning
 
