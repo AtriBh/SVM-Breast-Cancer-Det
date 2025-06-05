@@ -1,69 +1,61 @@
+
+```markdown
 # Breast Cancer Classification with SVM
+
+![SVM Decision Boundary](Screenshot_2025-06-05_180339.png)
 
 ## Project Overview
 
-This project implements a Support Vector Machine (SVM) classifier on the Wisconsin Breast Cancer dataset to distinguish malignant from benign tumors. The focus was on optimizing recall to minimize false negatives, which is critical in medical diagnostics.
+This project implements a Support Vector Machine (SVM) classifier on the Wisconsin Breast Cancer dataset to distinguish malignant from benign tumors, with special focus on optimizing recall to minimize false negatives in medical diagnostics.
 
 ## Key Features
 
 - Implemented SVM with both linear and RBF kernels
 - Visualized decision boundaries using PCA
-- Conducted hyperparameter tuning for C and gamma
-- Performed grid search validation
-- Focused on recall metric to minimize false negatives
+- Conducted hyperparameter tuning via validation curves
+- Performed comprehensive grid search
+- Focused on recall metric (critical for medical diagnosis)
 
 ## Methodology
 
-### Data Preparation
-- Standardized features using StandardScaler
-- Split data into training and test sets
-- Applied PCA for visualization (2 components)
+### 1. Data Preparation
+- Standardized features using `StandardScaler`
+- Performed train-test split (80-20 ratio)
+- Applied PCA for dimensionality reduction and visualization
 
-### Model Training
+### 2. Model Training
 ```python
 from sklearn.svm import SVC
 
-# RBF Kernel
+# Optimal parameters from validation curves
 svm_rbf = SVC(kernel='rbf', C=1.0, gamma=1.0, random_state=42)
 svm_rbf.fit(X_train, y_train)
-
-# Linear Kernel
-svm_linear = SVC(kernel='linear', C=1.0, random_state=42)
-svm_linear.fit(X_train, y_train)
 ```
 
-### Hyperparameter Tuning
-Used validation curves to find optimal parameters:
+### 3. Hyperparameter Tuning
+Used validation curves to identify optimal parameters:
 
-![Validation Curve for Gamma](Screenshot_2025-06-05_182513.png)
-*Gamma validation curve showing optimal value at 1.0*
+![Gamma Validation Curve](Screenshot_2025-06-05_182513.png)
+*Validation curve showing optimal gamma = 1.0*
 
-![Validation Curve for C](Screenshot_2025-06-05_182520.png)
-*C validation curve showing optimal value at 1.0*
+![C Parameter Validation Curve](Screenshot_2025-06-05_182520.png)
+*Validation curve showing optimal C = 1.0*
 
-### Grid Search Implementation
+### 4. Decision Boundary Visualization
 ```python
-from sklearn.model_selection import GridSearchCV
+from sklearn.inspection import DecisionBoundaryDisplay
 
-param_grid = {
-    'C': np.logspace(-3, 3, 7),
-    'gamma': np.logspace(-3, 2, 6),
-    'kernel': ['rbf']
-}
-
-grid_search = GridSearchCV(
-    SVC(random_state=42),
-    param_grid,
-    cv=5,
-    scoring='recall_macro',
-    n_jobs=-1
+DecisionBoundaryDisplay.from_estimator(
+    svm_rbf,
+    X_pca[:, :2],
+    response_method="predict",
+    cmap=plt.cm.coolwarm,
+    alpha=0.8
 )
-grid_search.fit(X_train, y_train)
 ```
 
-### Decision Boundary Visualization
-![Decision Boundary](Screenshot_2025-06-05_180339.png)
-*Decision boundary of SVM on PCA-transformed data*
+![Detailed Decision Boundary](Screenshot_2025-06-05_180329.png)
+*Decision boundary on PCA components with support vectors highlighted*
 
 ## Results
 
@@ -75,6 +67,21 @@ grid_search.fit(X_train, y_train)
 | Optimal Gamma   | 1.0        | N/A           |
 
 
-## Conclusion
 
-The SVM with RBF kernel achieved superior performance (test recall: 0.974) compared to the linear kernel. Through systematic validation and grid search, we confirmed the optimal hyperparameters to be C=1.0 and gamma=1.0. The decision boundary visualization demonstrates effective separation of malignant and benign cases in the reduced PCA space.
+## Dependencies
+
+- Python 3.7+
+- scikit-learn >= 1.0
+- matplotlib >= 3.5
+- numpy >= 1.21
+- pandas >= 1.3
+- jupyter >= 1.0
+
+## Image Files
+
+All visualization files are included in the repository:
+- `Screenshot_2025-06-05_180329.png`: Detailed decision boundary with support vectors
+- `Screenshot_2025-06-05_180339.png`: PCA decision boundary overview
+- `Screenshot_2025-06-05_182513.png`: Gamma parameter validation curve
+- `Screenshot_2025-06-05_182520.png`: C parameter validation curve
+
