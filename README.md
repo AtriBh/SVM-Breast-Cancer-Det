@@ -1,4 +1,3 @@
-# SVM-Breast-Cancer-Det
 # Breast Cancer Classification with SVM
 
 ## Project Overview
