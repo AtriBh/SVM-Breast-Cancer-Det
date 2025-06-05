@@ -1,4 +1,3 @@
-
 ```markdown
 # Breast Cancer Classification with SVM
 
@@ -24,7 +23,8 @@ This project implements a Support Vector Machine (SVM) classifier on the Wiscons
 - Applied PCA for dimensionality reduction and visualization
 
 ### 2. Model Training
-```python
+
+```
 from sklearn.svm import SVC
 
 # Optimal parameters from validation curves
@@ -42,7 +42,8 @@ Used validation curves to identify optimal parameters:
 *Validation curve showing optimal C = 1.0*
 
 ### 4. Decision Boundary Visualization
-```python
+
+```
 from sklearn.inspection import DecisionBoundaryDisplay
 
 DecisionBoundaryDisplay.from_estimator(
@@ -84,4 +85,5 @@ All visualization files are included in the repository:
 - `Screenshot_2025-06-05_180339.png`: PCA decision boundary overview
 - `Screenshot_2025-06-05_182513.png`: Gamma parameter validation curve
 - `Screenshot_2025-06-05_182520.png`: C parameter validation curve
+```
 
