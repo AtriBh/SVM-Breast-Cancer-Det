@@ -26,7 +26,7 @@ This project implements a Support Vector Machine (SVM) classifier on the Wiscons
 
 ### 2. Model Training
 
-```python
+
 from sklearn.svm import SVC
 
 # Optimal parameters from validation curves
@@ -56,7 +56,7 @@ DecisionBoundaryDisplay.from_estimator(
     cmap=plt.cm.coolwarm,
     alpha=0.8
 )
-```
+
 
 ![Detailed Decision Boundary](Screenshot%202025-06-05%20180329.png)
 *Decision boundary on PCA components with support vectors highlighted*
