@@ -1,7 +1,9 @@
 
+
+````markdown
 # Breast Cancer Classification with SVM
 
-![SVM Decision Boundary](Screenshot_2025-06-05_180339.png)
+![SVM Decision Boundary](Screenshot%202025-06-05%20180339.png)
 
 ## Project Overview
 
@@ -9,10 +11,10 @@ This project implements a Support Vector Machine (SVM) classifier on the Wiscons
 
 ## Key Features
 
-- Implemented SVM with both linear and RBF kernels
-- Visualized decision boundaries using PCA
-- Conducted hyperparameter tuning via validation curves
-- Performed comprehensive grid search
+- Implemented SVM with both linear and RBF kernels  
+- Visualized decision boundaries using PCA  
+- Conducted hyperparameter tuning via validation curves  
+- Performed comprehensive grid search  
 - Focused on recall metric (critical for medical diagnosis)
 
 ## Methodology
@@ -24,26 +26,27 @@ This project implements a Support Vector Machine (SVM) classifier on the Wiscons
 
 ### 2. Model Training
 
-```
+```python
 from sklearn.svm import SVC
 
 # Optimal parameters from validation curves
 svm_rbf = SVC(kernel='rbf', C=1.0, gamma=1.0, random_state=42)
 svm_rbf.fit(X_train, y_train)
-```
+````
 
 ### 3. Hyperparameter Tuning
+
 Used validation curves to identify optimal parameters:
 
-![Gamma Validation Curve](Screenshot_2025-06-05_182513.png)
+![Gamma Validation Curve](Screenshot%202025-06-05%20182513.png)
 *Validation curve showing optimal gamma = 1.0*
 
-![C Parameter Validation Curve](Screenshot_2025-06-05_182520.png)
+![C Parameter Validation Curve](Screenshot%202025-06-05%20182520.png)
 *Validation curve showing optimal C = 1.0*
 
 ### 4. Decision Boundary Visualization
 
-```
+```python
 from sklearn.inspection import DecisionBoundaryDisplay
 
 DecisionBoundaryDisplay.from_estimator(
@@ -55,35 +58,37 @@ DecisionBoundaryDisplay.from_estimator(
 )
 ```
 
-![Detailed Decision Boundary](Screenshot_2025-06-05_180329.png)
+![Detailed Decision Boundary](Screenshot%202025-06-05%20180329.png)
 *Decision boundary on PCA components with support vectors highlighted*
 
 ## Results
 
 | Metric          | RBF Kernel | Linear Kernel |
-|-----------------|------------|---------------|
+| --------------- | ---------- | ------------- |
 | Training Recall | 0.982      | 0.961         |
 | Test Recall     | 0.974      | 0.953         |
 | Optimal C       | 1.0        | 1.0           |
 | Optimal Gamma   | 1.0        | N/A           |
 
-
-
 ## Dependencies
 
-- Python 3.7+
-- scikit-learn >= 1.0
-- matplotlib >= 3.5
-- numpy >= 1.21
-- pandas >= 1.3
-- jupyter >= 1.0
+* Python 3.7+
+* scikit-learn >= 1.0
+* matplotlib >= 3.5
+* numpy >= 1.21
+* pandas >= 1.3
+* jupyter >= 1.0
 
 ## Image Files
 
 All visualization files are included in the repository:
-- `Screenshot_2025-06-05_180329.png`: Detailed decision boundary with support vectors
-- `Screenshot_2025-06-05_180339.png`: PCA decision boundary overview
-- `Screenshot_2025-06-05_182513.png`: Gamma parameter validation curve
-- `Screenshot_2025-06-05_182520.png`: C parameter validation curve
+
+* `Screenshot 2025-06-05 180329.png`: Detailed decision boundary with support vectors
+* `Screenshot 2025-06-05 180339.png`: PCA decision boundary overview
+* `Screenshot 2025-06-05 182513.png`: Gamma parameter validation curve
+* `Screenshot 2025-06-05 182520.png`: C parameter validation curve
+
+
+
 
 
